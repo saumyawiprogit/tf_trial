@@ -5,8 +5,8 @@ variable "secret_key" {}
 terraform {
   required_providers {
     aws = {
-      source  = "hashicorp/aws"
-      version = "~> 2.70"
+      source = "hashicorp/aws"
+      version = "3.9.0"
     }
   }
 }
