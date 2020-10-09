@@ -1,10 +1,3 @@
-
-variable "region" {}
-variable "access_key" {}
-variable "secret_key" {}
-
- 
-
 provider "aws" {
  region = "${var.region}"
  access_key = "${var.access_key}"
@@ -13,19 +6,13 @@ secret_key = "${var.secret_key}"
 
  
 
-resource "null_resource" "stop_instance2" {
+resource "aws_vpc" "main2" {
+  cidr_block       = "10.0.0.0/16"
+  instance_tenancy = "default"
 
  
 
-  provisioner "local-exec" {
-    interpreter = ["/bin/bash", "-c"]
-    command     = <<EOT
-        aws s3 ls
-        echo "***************************************Rebooted****************************************************"
-     EOT
-}
- triggers = {
-    always_run = "${timestamp()}"
+  tags = {
+    Name = "main2"
   }
 }
- 
