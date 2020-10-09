@@ -1,18 +1,31 @@
 
-variable "subscription_id" {}
-variable "name" {}
+variable "region" {​​​​}​​​​
+variable "access_key" {​​​​}​​​​
+variable "secret_key" {​​​​}​​​​
 
-provider "azurerm" {
+ 
 
- version = "=1.44.0"
+provider "aws" {​​​​
+ region = "${​​​​var.region}​​​​"
+ access_key = "${​​​​var.access_key}​​​​"
+secret_key = "${​​​​var.secret_key}​​​​"
+}​​​​
 
- subscription_id = "${var.subscription_id}"
-}
+ 
 
-resource "azurerm_resource_group" "resource_gp"{
-name = "${var.name}"
-location = "West Europe"
-tags = {
-Owner = "viswa"
-}
-}
+resource "null_resource" "stop_instance2" {​​​​
+
+ 
+
+  provisioner "local-exec" {​​​​
+    interpreter = ["/bin/bash", "-c"]
+    command     = <<EOT
+        aws s3 ls
+        echo "***************************************Rebooted****************************************************"
+     EOT
+}​​​​
+ triggers = {​​​​
+    always_run = "${​​​​timestamp()}​​​​"
+  }​​​​
+}​​​​
+ 
