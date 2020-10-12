@@ -1,3 +1,10 @@
+module "vpc" {
+  source = "git::https://example.com/vpc.git"
+}
+
+module "storage" {
+  source = "git::ssh://username@example.com/storage.git"
+}
 terraform {
   required_providers {
     aws = {
