@@ -2,6 +2,10 @@ variable "region" {}
 variable "access_key" {}
 variable "secret_key" {}
 
+module "consul" {
+  source = "github.com/hashicorp/example"
+}
+
 terraform {
   required_providers {
     aws = {
