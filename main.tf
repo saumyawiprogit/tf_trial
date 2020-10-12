@@ -2,9 +2,8 @@ variable "region" {}
 variable "access_key" {}
 variable "secret_key" {}
 
-module "consul" {
-  source = "hashicorp/consul/aws"
-  version = "0.1.0"
+module "vpc" {
+  source = "git::https://example.com/vpc.git"
 }
   
 terraform {
