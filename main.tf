@@ -2,9 +2,6 @@ variable "region" {}
 variable "access_key" {}
 variable "secret_key" {}
 
-module "vpc" {
-  source = "git::https://example.com/vpc.git"
-}
   
 terraform {
   required_providers {
