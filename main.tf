@@ -3,7 +3,8 @@ variable "access_key" {}
 variable "secret_key" {}
 
 module "consul" {
-  source = "git@github.com:hashicorp/example.git"
+  source = "hashicorp/consul/aws"
+  version = "0.1.0"
 }
   
 terraform {
