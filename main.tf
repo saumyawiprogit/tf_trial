@@ -3,9 +3,9 @@ variable "access_key" {}
 variable "secret_key" {}
 
 module "consul" {
-  source = "github.com/hashicorp/example"
+  source = "git@github.com:hashicorp/example.git"
 }
-
+  
 terraform {
   required_providers {
     aws = {
